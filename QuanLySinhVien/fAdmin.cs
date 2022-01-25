@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLySinhVien.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,30 +19,28 @@ namespace QuanLySinhVien
             InitializeComponent();
 
             loadAccounts();
+
+            loadSinhViens();
         }
 
         void loadAccounts()
         {
-            string connectionSTR = "Data Source=.\\FIRSTSERVER;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
+            //string query = "SELECT TENTAIKHOAN FROM dbo.TAIKHOAN";
 
-            SqlConnection connection = new SqlConnection(connectionSTR);
+            string query = "EXEC dbo.USP_GetAccountByUserName @TENTAIKHOAN";
+            
+            DataProvider provider = new DataProvider();
 
-            string query = "SELECT * FROM dbo.TAIKHOAN";
+            dtgvTaiKhoan.DataSource = provider.ExecuteQuery(query, new object[] { "K9" });
+        }
 
-            connection.Open();
+        void loadSinhViens()
+        {
+            string query = "SELECT * FROM dbo.SINHVIEN";
 
-            SqlCommand command = new SqlCommand(query, connection);
+            DataProvider provider = new DataProvider();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-            DataTable data = new DataTable();
-
-            adapter.Fill(data);
-
-            connection.Close();
-
-            dtgvTaiKhoan.DataSource = data;
-
+            dtgvSinhVien.DataSource = provider.ExecuteQuery(query);
         }
     }
 }
