@@ -12,6 +12,14 @@ GO
 -- 6. HOCPHAN
 -- 7. HOCPHANMONHOC
 
+
+-- 3. LOP
+CREATE TABLE LOP (
+ MALOP INT IDENTITY PRIMARY KEY
+ , TENLOP NVARCHAR(100) NOT NULL
+)
+GO
+
 -- 1. SINHVIEN
 CREATE TABLE SINHVIEN (
  MASINHVIEN INT IDENTITY PRIMARY KEY
@@ -33,15 +41,6 @@ CREATE TABLE TAIKHOAN (
  , FOREIGN KEY (MASINHVIEN) REFERENCES DBO.SINHVIEN(MASINHVIEN)
 )
 GO
-
-
--- 3. LOP
-CREATE TABLE LOP (
- MALOP INT IDENTITY PRIMARY KEY
- , TENLOP NVARCHAR(100) NOT NULL
-)
-GO
-
 
 -- 4. KHOA
 CREATE TABLE KHOA (
@@ -82,30 +81,56 @@ CREATE TABLE HOCPHANMONHOC (
 )
 GO
 
+-- Insert new KHOA
+INSERT INTO dbo.KHOA( TENKHOA )
+VALUES  ( 
+	      N'CONG NGHE THONG TIN' -- TENKHOA - nvarchar(100)
+        )
+        
+        
+-- Insert new MONHOC
+INSERT INTO dbo.MONHOC( TENMONHOC, SOTINCHI, MAKHOA )
+VALUES  ( 
+	      N'Toan Cao Cap' , -- TENMONHOC - nvarchar(100)
+          1 , -- SOTINCHI - int
+          1  -- MAKHOA - int
+        )
+        
+-- Insert new LOP
+INSERT INTO dbo.LOP( TENLOP )
+VALUES  ( 
+	      N'DH19IT01'  -- TENLOP - nvarchar(100)
+        )
+        
+-- Insert new SINHVIEN
+INSERT INTO dbo.SINHVIEN( HOTEN , DIACHI , DIENTHOAI, MALOP)
+VALUES  ( 
+	      N'NGUYEN VAN A' , -- HOTEN - nvarchar(100)
+          N'358 Le Duc Tho' , -- DIACHI - nvarchar(1000)
+          N'0827362522' , -- DIENTHOAI - nvarchar(1000) 
+          1  -- MALOP - int
+        )
+INSERT INTO dbo.SINHVIEN( HOTEN , DIACHI , DIENTHOAI, MALOP)
+VALUES  ( 
+	      N'NGUYEN VAN B' , -- HOTEN - nvarchar(100)
+          N'313113 Le Duc Tho' , -- DIACHI - nvarchar(1000)
+          N'0827362522' , -- DIENTHOAI - nvarchar(1000) 
+          1  -- MALOP - int
+        )
 
--- Insert new user
-INSERT INTO dbo.TAIKHOAN
-        ( MATAIKHOAN ,
-          TENTAIKHOAN ,
-          MATKHAU ,
-          MASINHVIEN
-        )
+-- Insert new TAIKHOAN
+INSERT INTO dbo.TAIKHOAN( TENTAIKHOAN , MATKHAU , MASINHVIEN)
 VALUES  ( 
-		  1 ,
-	      N'K9' , -- UserName - nvarchar(100)
-          N'1' , -- PassWord - nvarchar(1000)
-          1  -- Type - int
+	      N'K9' , -- TENTAIKHOAN - nvarchar(100)
+          N'1' , -- MATKHAU - nvarchar(1000)
+          1  -- MASINHVIEN - int
         )
-INSERT INTO dbo.TAIKHOAN
-        ( MATAIKHOAN ,
-          TENTAIKHOAN ,
-          MATKHAU ,
-          MASINHVIEN
-        )
+INSERT INTO dbo.TAIKHOAN( TENTAIKHOAN , MATKHAU , MASINHVIEN)
 VALUES  ( 
-		  2 ,
-		  N'staff' , -- UserName - nvarchar(100)
-          N'1' , -- PassWord - nvarchar(1000)
-          2  -- Type - int
+		  N'staff' , -- TENTAIKHOAN - nvarchar(100)
+          N'1' , -- MATKHAU - nvarchar(1000)
+          2  -- MASINHVIEN - int
         )
 GO
+
+
