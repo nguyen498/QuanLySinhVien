@@ -31,9 +31,9 @@ namespace QuanLySinhVien
         {
             //string query = "SELECT TENTAIKHOAN FROM dbo.TAIKHOAN";
 
-            string query = "EXEC dbo.USP_GetAccountByUserName @TENTAIKHOAN";
+            string query = "SELECT * FROM dbo.TAIKHOAN";
             
-            dtgvTaiKhoan.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "K9" });
+            dtgvTaiKhoan.DataSource = DataProvider.Instance.ExecuteQuery(query);
         }
 
         void loadSinhViens()
