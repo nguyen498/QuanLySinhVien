@@ -10,6 +10,15 @@ namespace QuanLySinhVien.DAO
 {
     class DataProvider
     {
+        private static DataProvider instance; 
+        internal static DataProvider Instance 
+        { 
+            get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
+            set => instance = value; 
+        }
+
+        private DataProvider() { }
+
         string connectionSTR = "Data Source=.\\FIRSTSERVER;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)

@@ -21,6 +21,10 @@ namespace QuanLySinhVien
             loadAccounts();
 
             loadSinhViens();
+
+            loadMonHocs();
+
+            loadHocPhans();
         }
 
         void loadAccounts()
@@ -29,18 +33,28 @@ namespace QuanLySinhVien
 
             string query = "EXEC dbo.USP_GetAccountByUserName @TENTAIKHOAN";
             
-            DataProvider provider = new DataProvider();
-
-            dtgvTaiKhoan.DataSource = provider.ExecuteQuery(query, new object[] { "K9" });
+            dtgvTaiKhoan.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "K9" });
         }
 
         void loadSinhViens()
         {
             string query = "SELECT * FROM dbo.SINHVIEN";
 
-            DataProvider provider = new DataProvider();
+            dtgvSinhVien.DataSource = DataProvider.Instance.ExecuteQuery(query);
+        }
 
-            dtgvSinhVien.DataSource = provider.ExecuteQuery(query);
+        void loadMonHocs()
+        {
+            string query = "SELECT * FROM dbo.MONHOC";
+
+            dtgvMonHoc.DataSource = DataProvider.Instance.ExecuteQuery(query);
+        }
+
+        void loadHocPhans()
+        {
+            string query = "SELECT * FROM dbo.HOCPHAN";
+
+            dtgvHocPhan.DataSource = DataProvider.Instance.ExecuteQuery(query);
         }
     }
 }
