@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLySinhVien.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,15 @@ namespace QuanLySinhVien
         public fDangKyHocPhan()
         {
             InitializeComponent();
+
+            loadMonHocs();
+        }
+
+        void loadMonHocs()
+        {
+            string query = "SELECT * FROM dbo.MONHOC";
+
+            dtgvDKHP.DataSource = DataProvider.Instance.ExecuteQuery(query);
         }
 
         private void thôngTinCaNhânToolStripMenuItem_Click(object sender, EventArgs e)

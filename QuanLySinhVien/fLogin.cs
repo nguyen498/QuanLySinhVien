@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLySinhVien.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,21 @@ namespace QuanLySinhVien
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            fDangKyHocPhan f = new fDangKyHocPhan();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            string tenTaiKhoan = txtTenTaiKhoan.Text;
+            string matkhau = txtMatKhau.Text;
+            bool loginResult = TaiKhoanDAO.Instance.Login(tenTaiKhoan, matkhau);
+
+            if (loginResult)
+            {
+                fDangKyHocPhan f = new fDangKyHocPhan();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
