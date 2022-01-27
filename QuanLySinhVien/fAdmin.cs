@@ -14,47 +14,91 @@ namespace QuanLySinhVien
 {
     public partial class fAdmin : Form
     {
+        BindingSource taiKhoanList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
 
-            loadAccounts();
-
-            loadSinhViens();
-
-            loadMonHocs();
-
-            loadHocPhans();
+            dtgvTaiKhoan.DataSource = taiKhoanList;
+            loadTaiKhoans();
+            loadTaiKhoanBiding();
         }
 
-        void loadAccounts()
+        #region methods
+        void loadTaiKhoans()
         {
-            //string query = "SELECT TENTAIKHOAN FROM dbo.TAIKHOAN";
-
-            string query = "EXEC dbo.USP_GetAccountByUserName @TENTAIKHOAN";
-            
-            dtgvTaiKhoan.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "K9" });
+            taiKhoanList.DataSource = TaiKhoanDAO.Instance.getTaiKhoans();
         }
 
-        void loadSinhViens()
-        {
-            string query = "SELECT * FROM dbo.SINHVIEN";
 
-            dtgvSinhVien.DataSource = DataProvider.Instance.ExecuteQuery(query);
+        private void loadTaiKhoanBiding()
+        {
+            txtIDTaiKhoan.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATAIKHOAN", true, DataSourceUpdateMode.Never));
+            txtTenTaiKhoan.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "TENTAIKHOAN", true, DataSourceUpdateMode.Never));
+            txtMatKhau.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATKHAU", true, DataSourceUpdateMode.Never));
+            txtMaSinhVien.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MASINHVIEN", true, DataSourceUpdateMode.Never));
+        }
+        #endregion
+
+
+
+
+        #region Events
+        private void btnViewTaiKhoan_Click(object sender, EventArgs e)
+        {
+            loadTaiKhoans();
         }
 
-        void loadMonHocs()
-        {
-            string query = "SELECT * FROM dbo.MONHOC";
+        #endregion
 
-            dtgvMonHoc.DataSource = DataProvider.Instance.ExecuteQuery(query);
+        private void btnAddTaiKhoan_Click(object sender, EventArgs e)
+        {
+            string tenTaiKhoan = txtTenTaiKhoan.Text;
+            string matKhau = txtMatKhau.Text;
+            int maSinhVien = Convert.ToInt32(txtMaSinhVien.Text);
+
+            if (TaiKhoanDAO.Instance.insertTaiKhoan(tenTaiKhoan, matKhau, maSinhVien))
+            {
+                MessageBox.Show("Thêm tài khoản thành công");
+                loadTaiKhoans();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm tài khoản");
+            }
         }
 
-        void loadHocPhans()
+        private void btnEditTaiKhoan_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM dbo.HOCPHAN";
+            int maTaiKhoan = Convert.ToInt32(txtIDTaiKhoan.Text);
+            string tenTaiKhoan = txtTenTaiKhoan.Text;
+            string matKhau = txtMatKhau.Text;
+            int maSinhVien = Convert.ToInt32(txtMaSinhVien.Text);
 
-            dtgvHocPhan.DataSource = DataProvider.Instance.ExecuteQuery(query);
+            if (TaiKhoanDAO.Instance.updateTaiKhoan(maTaiKhoan, tenTaiKhoan, matKhau, maSinhVien))
+            {
+                MessageBox.Show("Cập nhật tài khoản thành công");
+                loadTaiKhoans();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi cập nhật tài khoản");
+            }
+        }
+
+        private void btnDeleteTaiKhoan_Click(object sender, EventArgs e)
+        {
+            int maTaiKhoan = Convert.ToInt32(txtIDTaiKhoan.Text);
+
+            if (TaiKhoanDAO.Instance.deleteTaiKhoan(maTaiKhoan))
+            {
+                MessageBox.Show("Xóa tài khoản thành công");
+                loadTaiKhoans();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi Xóa tài khoản");
+            }
         }
     }
 }
