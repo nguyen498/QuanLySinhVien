@@ -41,7 +41,7 @@ namespace QuanLySinhVien.DAO
             return result > 0;
         }
 
-        public bool deleteTaiKhoan(int maSinhVien)
+        public bool deleteSinhVien(int maSinhVien)
         {
             string query = string.Format("DELETE dbo.SINHVIEN WHERE MASINHVIEN = {0}", maSinhVien);
 
