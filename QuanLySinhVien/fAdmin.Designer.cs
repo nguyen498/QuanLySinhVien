@@ -54,7 +54,7 @@ namespace QuanLySinhVien
             this.btnEditMonHoc = new System.Windows.Forms.Button();
             this.btnAddMonHoc = new System.Windows.Forms.Button();
             this.btnViewMonHoc = new System.Windows.Forms.Button();
-            this.tpHocPhan = new System.Windows.Forms.TabPage();
+            this.tpHocPhanDangKy = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.lvHocPhanCuaSinhVien = new System.Windows.Forms.ListView();
@@ -158,7 +158,7 @@ namespace QuanLySinhVien
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonHoc)).BeginInit();
             this.panel2.SuspendLayout();
-            this.tpHocPhan.SuspendLayout();
+            this.tpHocPhanDangKy.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -203,7 +203,7 @@ namespace QuanLySinhVien
             // tcAdmin
             // 
             this.tcAdmin.Controls.Add(this.tpMonHoc);
-            this.tcAdmin.Controls.Add(this.tpHocPhan);
+            this.tcAdmin.Controls.Add(this.tpHocPhanDangKy);
             this.tcAdmin.Controls.Add(this.tpSinhVien);
             this.tcAdmin.Controls.Add(this.tpKhoa);
             this.tcAdmin.Controls.Add(this.tpLop);
@@ -435,18 +435,18 @@ namespace QuanLySinhVien
             this.btnViewMonHoc.UseVisualStyleBackColor = true;
             this.btnViewMonHoc.Click += new System.EventHandler(this.btnViewMonHoc_Click);
             // 
-            // tpHocPhan
+            // tpHocPhanDangKy
             // 
-            this.tpHocPhan.Controls.Add(this.panel3);
-            this.tpHocPhan.Controls.Add(this.panel16);
-            this.tpHocPhan.Controls.Add(this.panel17);
-            this.tpHocPhan.Location = new System.Drawing.Point(4, 22);
-            this.tpHocPhan.Name = "tpHocPhan";
-            this.tpHocPhan.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHocPhan.Size = new System.Drawing.Size(640, 472);
-            this.tpHocPhan.TabIndex = 1;
-            this.tpHocPhan.Text = "Học Phần";
-            this.tpHocPhan.UseVisualStyleBackColor = true;
+            this.tpHocPhanDangKy.Controls.Add(this.panel3);
+            this.tpHocPhanDangKy.Controls.Add(this.panel16);
+            this.tpHocPhanDangKy.Controls.Add(this.panel17);
+            this.tpHocPhanDangKy.Location = new System.Drawing.Point(4, 22);
+            this.tpHocPhanDangKy.Name = "tpHocPhanDangKy";
+            this.tpHocPhanDangKy.Padding = new System.Windows.Forms.Padding(3);
+            this.tpHocPhanDangKy.Size = new System.Drawing.Size(640, 472);
+            this.tpHocPhanDangKy.TabIndex = 1;
+            this.tpHocPhanDangKy.Text = "Học Phần Đăng Ký";
+            this.tpHocPhanDangKy.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -1304,7 +1304,7 @@ namespace QuanLySinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 456);
+            this.ClientSize = new System.Drawing.Size(672, 507);
             this.Controls.Add(this.tcAdmin);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1325,7 +1325,7 @@ namespace QuanLySinhVien
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMonHoc)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.tpHocPhan.ResumeLayout(false);
+            this.tpHocPhanDangKy.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel15.ResumeLayout(false);
@@ -1390,7 +1390,7 @@ namespace QuanLySinhVien
 
         private System.Windows.Forms.TabControl tcAdmin;
         private System.Windows.Forms.TabPage tpMonHoc;
-        private System.Windows.Forms.TabPage tpHocPhan;
+        private System.Windows.Forms.TabPage tpHocPhanDangKy;
         private System.Windows.Forms.TabPage tpSinhVien;
         private System.Windows.Forms.TabPage tpKhoa;
         private System.Windows.Forms.Panel panel5;

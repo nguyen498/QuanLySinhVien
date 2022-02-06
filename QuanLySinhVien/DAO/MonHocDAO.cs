@@ -24,6 +24,57 @@ namespace QuanLySinhVien.DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+        public List<MonHoc> getListOfMonHoc()
+        {
+            List<MonHoc> list = new List<MonHoc>();
+
+            string query = "SELECT * FROM dbo.MONHOC";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                MonHoc MonHoc = new MonHoc(item);
+                list.Add(MonHoc);
+            }
+
+            return list;
+        }
+        public List<MonHoc> GetMonHocListByTenMonHoc(string tenMonHoc)
+        {
+            List<MonHoc> list = new List<MonHoc>();
+
+            string query = string.Format("SELECT * FROM dbo.MONHOC WHERE TENMONHOC = N'{0}'", tenMonHoc);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                MonHoc MonHoc = new MonHoc(item);
+                list.Add(MonHoc);
+            }
+
+            return list;
+        }
+
+        public List<MonHoc> GetMonHocListByMaKhoa(int maKhoa)
+        {
+            List<MonHoc> list = new List<MonHoc>();
+
+            string query = string.Format("SELECT * FROM dbo.MONHOC WHERE MONHOC.MAKHOA = {0}", maKhoa);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                MonHoc MonHoc = new MonHoc(item);
+                list.Add(MonHoc);
+            }
+
+            return list;
+        }
+
+
         public bool insertMonHoc(string tenMonHoc, int soTinChi, int maKhoa)
         {
             string query = string.Format("INSERT dbo.MONHOC( TENMONHOC, SOTINCHI, MAKHOA ) VALUES (N'{0}', N'{1}', N'{2}')", tenMonHoc, soTinChi, maKhoa);
@@ -66,6 +117,8 @@ namespace QuanLySinhVien.DAO
 
             return list;
         }
+
+
     }
 }
 

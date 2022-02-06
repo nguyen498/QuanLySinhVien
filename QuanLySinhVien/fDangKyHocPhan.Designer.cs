@@ -35,26 +35,24 @@ namespace QuanLySinhVien
             this.thôngTinCaNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuâtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSearchDKHP = new System.Windows.Forms.Button();
-            this.txtSearchDKHP = new System.Windows.Forms.TextBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dtgvMonHoc = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dtgvMonDaDangKy = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.lvDKHP = new System.Windows.Forms.ListView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnDangKyDKHP = new System.Windows.Forms.Button();
             this.btnHuyDangKyDKHP = new System.Windows.Forms.Button();
-            this.dtgvDKHP = new System.Windows.Forms.DataGridView();
+            this.btnDangKyDKHP = new System.Windows.Forms.Button();
+            this.cbFilterSelect = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvMonHoc)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvMonDaDangKy)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDKHP)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,65 +85,53 @@ namespace QuanLySinhVien
             // thôngTinCaNhânToolStripMenuItem
             // 
             this.thôngTinCaNhânToolStripMenuItem.Name = "thôngTinCaNhânToolStripMenuItem";
-            this.thôngTinCaNhânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thôngTinCaNhânToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.thôngTinCaNhânToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thôngTinCaNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCaNhânToolStripMenuItem_Click);
             // 
             // đăngXuâtToolStripMenuItem
             // 
             this.đăngXuâtToolStripMenuItem.Name = "đăngXuâtToolStripMenuItem";
-            this.đăngXuâtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuâtToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.đăngXuâtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuâtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuâtToolStripMenuItem_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cbCategory);
+            this.panel1.Controls.Add(this.cbFilter);
             this.panel1.Location = new System.Drawing.Point(12, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(380, 27);
             this.panel1.TabIndex = 2;
             // 
-            // cbCategory
+            // cbFilter
             // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(4, 4);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(373, 21);
-            this.cbCategory.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnSearchDKHP);
-            this.panel2.Controls.Add(this.txtSearchDKHP);
-            this.panel2.Location = new System.Drawing.Point(398, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(286, 27);
-            this.panel2.TabIndex = 3;
-            // 
-            // btnSearchDKHP
-            // 
-            this.btnSearchDKHP.Location = new System.Drawing.Point(206, 4);
-            this.btnSearchDKHP.Name = "btnSearchDKHP";
-            this.btnSearchDKHP.Size = new System.Drawing.Size(75, 20);
-            this.btnSearchDKHP.TabIndex = 1;
-            this.btnSearchDKHP.Text = "Tìm Kiếm";
-            this.btnSearchDKHP.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchDKHP
-            // 
-            this.txtSearchDKHP.Location = new System.Drawing.Point(4, 4);
-            this.txtSearchDKHP.Name = "txtSearchDKHP";
-            this.txtSearchDKHP.Size = new System.Drawing.Size(196, 20);
-            this.txtSearchDKHP.TabIndex = 0;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "Lọc theo Khoa",
+            "Lọc theo Môn Học"});
+            this.cbFilter.Location = new System.Drawing.Point(4, 4);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(373, 21);
+            this.cbFilter.TabIndex = 0;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dtgvDKHP);
+            this.panel3.Controls.Add(this.dtgvMonHoc);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(12, 62);
+            this.panel3.Location = new System.Drawing.Point(12, 86);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(380, 332);
+            this.panel3.Size = new System.Drawing.Size(380, 308);
             this.panel3.TabIndex = 4;
+            // 
+            // dtgvMonHoc
+            // 
+            this.dtgvMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvMonHoc.Location = new System.Drawing.Point(0, 24);
+            this.dtgvMonHoc.Name = "dtgvMonHoc";
+            this.dtgvMonHoc.Size = new System.Drawing.Size(377, 305);
+            this.dtgvMonHoc.TabIndex = 2;
             // 
             // label1
             // 
@@ -158,12 +144,20 @@ namespace QuanLySinhVien
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.dtgvMonDaDangKy);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.lvDKHP);
-            this.panel4.Location = new System.Drawing.Point(398, 62);
+            this.panel4.Location = new System.Drawing.Point(398, 86);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(286, 277);
+            this.panel4.Size = new System.Drawing.Size(286, 253);
             this.panel4.TabIndex = 5;
+            // 
+            // dtgvMonDaDangKy
+            // 
+            this.dtgvMonDaDangKy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvMonDaDangKy.Location = new System.Drawing.Point(4, 24);
+            this.dtgvMonDaDangKy.Name = "dtgvMonDaDangKy";
+            this.dtgvMonDaDangKy.Size = new System.Drawing.Size(277, 250);
+            this.dtgvMonDaDangKy.TabIndex = 2;
             // 
             // label2
             // 
@@ -174,15 +168,6 @@ namespace QuanLySinhVien
             this.label2.TabIndex = 1;
             this.label2.Text = "Môn đã đăng ký";
             // 
-            // lvDKHP
-            // 
-            this.lvDKHP.HideSelection = false;
-            this.lvDKHP.Location = new System.Drawing.Point(0, 24);
-            this.lvDKHP.Name = "lvDKHP";
-            this.lvDKHP.Size = new System.Drawing.Size(286, 254);
-            this.lvDKHP.TabIndex = 0;
-            this.lvDKHP.UseCompatibleStateImageBehavior = false;
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnHuyDangKyDKHP);
@@ -192,15 +177,6 @@ namespace QuanLySinhVien
             this.panel5.Size = new System.Drawing.Size(284, 47);
             this.panel5.TabIndex = 6;
             // 
-            // btnDangKyDKHP
-            // 
-            this.btnDangKyDKHP.Location = new System.Drawing.Point(205, 4);
-            this.btnDangKyDKHP.Name = "btnDangKyDKHP";
-            this.btnDangKyDKHP.Size = new System.Drawing.Size(75, 40);
-            this.btnDangKyDKHP.TabIndex = 0;
-            this.btnDangKyDKHP.Text = "Đăng ký";
-            this.btnDangKyDKHP.UseVisualStyleBackColor = true;
-            // 
             // btnHuyDangKyDKHP
             // 
             this.btnHuyDangKyDKHP.Location = new System.Drawing.Point(124, 4);
@@ -209,41 +185,52 @@ namespace QuanLySinhVien
             this.btnHuyDangKyDKHP.TabIndex = 0;
             this.btnHuyDangKyDKHP.Text = "Hủy đăng ký";
             this.btnHuyDangKyDKHP.UseVisualStyleBackColor = true;
+            this.btnHuyDangKyDKHP.Click += new System.EventHandler(this.btnHuyDangKyDKHP_Click);
             // 
-            // dtgvDKHP
+            // btnDangKyDKHP
             // 
-            this.dtgvDKHP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDKHP.Location = new System.Drawing.Point(0, 24);
-            this.dtgvDKHP.Name = "dtgvDKHP";
-            this.dtgvDKHP.Size = new System.Drawing.Size(377, 305);
-            this.dtgvDKHP.TabIndex = 2;
+            this.btnDangKyDKHP.Location = new System.Drawing.Point(205, 4);
+            this.btnDangKyDKHP.Name = "btnDangKyDKHP";
+            this.btnDangKyDKHP.Size = new System.Drawing.Size(75, 40);
+            this.btnDangKyDKHP.TabIndex = 0;
+            this.btnDangKyDKHP.Text = "Đăng ký";
+            this.btnDangKyDKHP.UseVisualStyleBackColor = true;
+            this.btnDangKyDKHP.Click += new System.EventHandler(this.btnDangKyDKHP_Click);
+            // 
+            // cbFilterSelect
+            // 
+            this.cbFilterSelect.FormattingEnabled = true;
+            this.cbFilterSelect.Location = new System.Drawing.Point(16, 59);
+            this.cbFilterSelect.Name = "cbFilterSelect";
+            this.cbFilterSelect.Size = new System.Drawing.Size(373, 21);
+            this.cbFilterSelect.TabIndex = 0;
+            this.cbFilterSelect.SelectedIndexChanged += new System.EventHandler(this.cbFilterSelect_SelectedIndexChanged);
             // 
             // fDangKyHocPhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 416);
+            this.ClientSize = new System.Drawing.Size(696, 428);
+            this.Controls.Add(this.cbFilterSelect);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "fDangKyHocPhan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đăng Ký Học Phần";
+            this.Text = "Đăng Ký Môn Học";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvMonHoc)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvMonDaDangKy)).EndInit();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDKHP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,18 +243,16 @@ namespace QuanLySinhVien
         private System.Windows.Forms.ToolStripMenuItem thôngTinCaNhânToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuâtToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cbCategory;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnSearchDKHP;
-        private System.Windows.Forms.TextBox txtSearchDKHP;
+        private System.Windows.Forms.ComboBox cbFilter;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ListView lvDKHP;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnDangKyDKHP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHuyDangKyDKHP;
-        private System.Windows.Forms.DataGridView dtgvDKHP;
+        private System.Windows.Forms.DataGridView dtgvMonHoc;
+        private System.Windows.Forms.DataGridView dtgvMonDaDangKy;
+        private System.Windows.Forms.ComboBox cbFilterSelect;
     }
 }

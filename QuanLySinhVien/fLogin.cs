@@ -1,4 +1,5 @@
 ﻿using QuanLySinhVien.DAO;
+using QuanLySinhVien.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,10 +24,12 @@ namespace QuanLySinhVien
             string tenTaiKhoan = txtTenTaiKhoan.Text;
             string matkhau = txtMatKhau.Text;
             bool loginResult = TaiKhoanDAO.Instance.Login(tenTaiKhoan, matkhau);
+            // Lấy TaiKhoan bơm vào form đăng ký học phần
+            TaiKhoan current_user = TaiKhoanDAO.Instance.getTaiKhoanByTenTaiKhoan(tenTaiKhoan);
 
             if (loginResult)
             {
-                fDangKyHocPhan f = new fDangKyHocPhan();
+                fDangKyHocPhan f = new fDangKyHocPhan(current_user);
                 this.Hide();
                 f.ShowDialog();
                 this.Show();

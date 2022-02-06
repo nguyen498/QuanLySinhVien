@@ -9,13 +9,19 @@ namespace QuanLySinhVien.DTO
 {
     class SinhVien
     {
-        public SinhVien(int maSinhVien, string hoTen, string diaChi,string dienThoai, int maLop)
+        private int maSinhVien;
+        private string hoTen;
+        private string diaChi;
+        private string dienThoai;
+        private int maLop;
+
+        public SinhVien(int maSinhVien, string hoTen, string diaChi, string dienThoai, int maLop)
         {
             this.maSinhVien = maSinhVien;
             this.hoTen = hoTen;
             this.diaChi = diaChi;
             this.dienThoai = dienThoai;
-            this.maLop = maLop; 
+            this.maLop = maLop;
         }
 
         public SinhVien(DataRow row)
@@ -25,45 +31,12 @@ namespace QuanLySinhVien.DTO
             this.diaChi = row["diaChi"].ToString();
             this.dienThoai = row["dienThoai"].ToString();
             this.maLop = (int)row["maLop"];
-    }
-
-
-        private int maSinhVien;
-
-        public int MaSinhVien
-        {
-            get { return maSinhVien; }
-            set { maSinhVien = value; }
         }
 
-        private string hoTen;
-
-        public string HoTen
-        {
-            get { return hoTen; }
-            set { hoTen = value; }
-        }
-        private string diaChi;
-
-        public string DiaChi
-        {
-            get { return diaChi; }
-            set { diaChi = value; }
-        }
-        private string dienThoai;
-
-        public string DienThoai
-        {
-            get { return dienThoai; }
-            set { dienThoai = value; }
-        }
-
-        private int maLop;
-
-        public int MaLop
-        {
-            get { return maLop; }
-            set { maLop = value; }
-        }
+        public int MaSinhVien { get => maSinhVien; set => maSinhVien = value; }
+        public string HoTen { get => hoTen; set => hoTen = value; }
+        public string DiaChi { get => diaChi; set => diaChi = value; }
+        public string DienThoai { get => dienThoai; set => dienThoai = value; }
+        public int MaLop { get => maLop; set => maLop = value; }
     }
 }

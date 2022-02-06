@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLySinhVien.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -58,6 +59,27 @@ namespace QuanLySinhVien.DAO
             string query = string.Format("DELETE dbo.TAIKHOAN WHERE MATAIKHOAN = {0}", maTaiKhoan);
 
             int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public TaiKhoan getTaiKhoanByTenTaiKhoan(string tenTaiKhoan)
+        {
+            string query = string.Format("SELECT * FROM dbo.TAIKHOAN WHERE TENTAIKHOAN = '{0}'", tenTaiKhoan);
+
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in result.Rows)
+            {
+                return new TaiKhoan(item);
+            }
+
+            return null;
+        }
+
+        public bool updateTaiKhoan(string tenTaiKhoan, string tenHienThi, string matKhau, string matKhauMoi)
+        {
+            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateTaiKhoan @tenTaiKhoan , @tenHienThi , @password , @newPassword", new object[] { tenTaiKhoan, tenHienThi, matKhau, matKhauMoi });
 
             return result > 0;
         }

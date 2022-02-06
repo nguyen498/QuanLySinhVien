@@ -7,53 +7,33 @@ using System.Data;
 
 namespace QuanLySinhVien.DTO
 {
-    class MonHoc
+    public class MonHoc
     {
+        private int maMonHoc;
+        private string tenMonHoc;
+        private int soTinChi;
+        private int maKhoa;
+
         public MonHoc(int maMonHoc, string tenMonHoc, int soTinChi, int maKhoa)
         {
             this.maMonHoc = maMonHoc;
-            this.tenMonHoc = tenMonHoc;
-            this.soTinChi = soTinChi;
-            this.maKhoa = maKhoa;
+            this.TenMonHoc = tenMonHoc;
+            this.SoTinChi = soTinChi;
+            this.MaKhoa = maKhoa;
         }
 
         public MonHoc(DataRow row)
         {
             this.maMonHoc = (int)row["maMonHoc"];
-            this.tenMonHoc = row["tenMonHoc"].ToString();
-            this.soTinChi = (int)row["soTinChi"];
-            this.maKhoa = (int)row["maKhoa"];
+            this.TenMonHoc = row["tenMonHoc"].ToString();
+            this.SoTinChi = (int)row["soTinChi"];
+            this.MaKhoa = (int)row["maKhoa"];
         }
 
-        private int maMonHoc;
-
-        public int MaMonHoc
-        {
-            get { return maMonHoc; }
-            set { maMonHoc = value; }
-        }
-
-        private string tenMonHoc;
-
-        public string TenMonHoc
-        {
-            get { return tenMonHoc; }
-            set { TenMonHoc = value; }
-        }
-        private int soTinChi;
-
-        public int SoTinChi
-        {
-            get { return soTinChi; }
-            set { soTinChi = value; }
-        }
-        private int maKhoa;
-
-        public int MaKhoa
-        {
-            get { return maKhoa; }
-            set { maKhoa = value; }
-        }
+        public int MaMonHoc { get => maMonHoc; set => maMonHoc = value; }
+        public string TenMonHoc { get => tenMonHoc; set => tenMonHoc = value; }
+        public int SoTinChi { get => soTinChi; set => soTinChi = value; }
+        public int MaKhoa { get => maKhoa; set => maKhoa = value; }
 
     }
 }
