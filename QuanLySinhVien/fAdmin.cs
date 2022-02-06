@@ -1,4 +1,5 @@
 ﻿using QuanLySinhVien.DAO;
+using QuanLySinhVien.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace QuanLySinhVien
         BindingSource lopList = new BindingSource();
 
         BindingSource khoaList = new BindingSource();
+
+        BindingSource monHocList = new BindingSource();
         public fAdmin()
         {
             InitializeComponent();
@@ -40,6 +43,10 @@ namespace QuanLySinhVien
             dtgvKhoa.DataSource = khoaList;
             loadKhoas();
             loadKhoaBinding();
+
+            dtgvMonHoc.DataSource = monHocList;
+            loadMonHocs();
+            loadMonHocBinding();
         }
 
         #region methods
@@ -61,6 +68,22 @@ namespace QuanLySinhVien
         void loadKhoas()
         {
             khoaList.DataSource = KhoaDAO.Instance.getKhoas();
+        }
+        void loadMonHocs()
+        {
+            monHocList.DataSource = MonHocDAO.Instance.getMonHocs();
+        }
+        List<SinhVien> SearchSinhVienByName(string name)
+        {
+            List<SinhVien> listSinhVien = SinhVienDAO.Instance.SearchSinhVienByName(name);
+
+            return listSinhVien;
+        }
+        List<MonHoc> SearchMonHocByName(string name)
+        {
+            List<MonHoc> listMonHoc = MonHocDAO.Instance.SearchMonHocByName(name);
+
+            return listMonHoc;
         }
 
         private void loadTaiKhoanBinding()
@@ -91,6 +114,13 @@ namespace QuanLySinhVien
         {
             txtIDKhoa.DataBindings.Add(new Binding("Text", dtgvKhoa.DataSource, "MAKHOA", true, DataSourceUpdateMode.Never));
             txtTenKhoa.DataBindings.Add(new Binding("Text", dtgvKhoa.DataSource, "TENKHOA", true, DataSourceUpdateMode.Never));
+        }
+        private void loadMonHocBinding()
+        {
+            txtIDMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATAIKHOAN", true, DataSourceUpdateMode.Never));
+            txtTenMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "TENTAIKHOAN", true, DataSourceUpdateMode.Never));
+            txtSoTinChiMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATKHAU", true, DataSourceUpdateMode.Never));
+            txtDonViPhuTrachMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MASINHVIEN", true, DataSourceUpdateMode.Never));
         }
         #endregion
 
@@ -311,6 +341,71 @@ namespace QuanLySinhVien
             else
             {
                 MessageBox.Show("Có lỗi khi xóa lớp");
+            }
+        }
+
+        private void btnSearchMonHoc_Click(object sender, EventArgs e)
+        {
+            monHocList.DataSource = SearchMonHocByName(txtSearchMonHoc.Text);
+        }
+
+        private void btnSearchSinhVien_Click(object sender, EventArgs e)
+        {
+            sinhVienList.DataSource = SearchSinhVienByName(txtSearchSinhVien.Text);
+        }
+
+        private void btnViewMonHoc_Click(object sender, EventArgs e)
+        {
+            loadMonHocs();
+        }
+
+        private void btnAddMonHoc_Click(object sender, EventArgs e)
+        {
+            string tenMonHoc = txtTenMonHoc.Text;
+            int soTinChi = Convert.ToInt32(txtSoTinChiMonHoc.Text);
+            int donViPhuTrach = Convert.ToInt32(txtDonViPhuTrachMonHoc.Text);
+
+            if (MonHocDAO.Instance.insertMonHoc(tenMonHoc, soTinChi, donViPhuTrach))
+            {
+                MessageBox.Show("Thêm môn học thành công");
+                loadMonHocs();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm môn học");
+            }
+        }
+
+        private void btnEditMonHoc_Click(object sender, EventArgs e)
+        {
+            int maMonHoc = Convert.ToInt32(txtIDMonHoc.Text);
+            string tenMonHoc = txtTenMonHoc.Text;
+            int soTinChi = Convert.ToInt32(txtSoTinChiMonHoc.Text);
+            int donViPhuTrach = Convert.ToInt32(txtDonViPhuTrachMonHoc.Text);
+
+            if (MonHocDAO.Instance.updateMonHoc(maMonHoc,tenMonHoc, soTinChi,donViPhuTrach))
+            {
+                MessageBox.Show("Cập nhật môn học thành công");
+                loadMonHocs();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi cập nhật môn học");
+            }
+        }
+
+        private void btnDeleteMonHoc_Click(object sender, EventArgs e)
+        {
+            int maMonHoc = Convert.ToInt32(txtIDMonHoc.Text);
+
+            if (MonHocDAO.Instance.deleteMonHoc(maMonHoc))
+            {
+                MessageBox.Show("Xóa môn học thành công");
+                loadMonHocs();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa môn học");
             }
         }
     }

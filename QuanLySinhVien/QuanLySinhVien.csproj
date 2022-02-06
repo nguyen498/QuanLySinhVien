@@ -49,8 +49,11 @@
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\KhoaDAO.cs" />
     <Compile Include="DAO\LopDAO.cs" />
+    <Compile Include="DAO\MonHocDAO.cs" />
     <Compile Include="DAO\SinhVienDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DTO\MonHoc.cs" />
+    <Compile Include="DTO\SinhVien.cs" />
     <Compile Include="fAccountProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,8 +114,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

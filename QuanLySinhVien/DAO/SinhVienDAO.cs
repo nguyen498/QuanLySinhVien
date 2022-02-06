@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QuanLySinhVien.DTO;
 
 namespace QuanLySinhVien.DAO
 {
@@ -48,6 +49,22 @@ namespace QuanLySinhVien.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
+        }
+        public List<SinhVien> SearchSinhVienByName(string name)
+        {
+            List<SinhVien> list = new List<SinhVien>();
+
+            string query = string.Format("SELECT * FROM dbo.SinhVien WHERE dbo.fuConvertToUnsign1(HOTEN) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                SinhVien SinhVien = new SinhVien(item);
+                list.Add(SinhVien);
+            }
+
+            return list;
         }
     }
 }

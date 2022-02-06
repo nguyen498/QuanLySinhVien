@@ -221,7 +221,7 @@ namespace QuanLySinhVien
             this.tpMonHoc.Controls.Add(this.panel2);
             this.tpMonHoc.Location = new System.Drawing.Point(4, 22);
             this.tpMonHoc.Name = "tpMonHoc";
-            this.tpMonHoc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpMonHoc.Padding = new System.Windows.Forms.Padding(3);
             this.tpMonHoc.Size = new System.Drawing.Size(640, 472);
             this.tpMonHoc.TabIndex = 0;
             this.tpMonHoc.Text = "Môn Học";
@@ -364,6 +364,7 @@ namespace QuanLySinhVien
             this.btnSearchMonHoc.TabIndex = 0;
             this.btnSearchMonHoc.Text = "Tìm";
             this.btnSearchMonHoc.UseVisualStyleBackColor = true;
+            this.btnSearchMonHoc.Click += new System.EventHandler(this.btnSearchMonHoc_Click);
             // 
             // panel4
             // 
@@ -402,6 +403,7 @@ namespace QuanLySinhVien
             this.btnDeleteMonHoc.TabIndex = 0;
             this.btnDeleteMonHoc.Text = "Xóa";
             this.btnDeleteMonHoc.UseVisualStyleBackColor = true;
+            this.btnDeleteMonHoc.Click += new System.EventHandler(this.btnDeleteMonHoc_Click);
             // 
             // btnEditMonHoc
             // 
@@ -411,6 +413,7 @@ namespace QuanLySinhVien
             this.btnEditMonHoc.TabIndex = 0;
             this.btnEditMonHoc.Text = "Sửa";
             this.btnEditMonHoc.UseVisualStyleBackColor = true;
+            this.btnEditMonHoc.Click += new System.EventHandler(this.btnEditMonHoc_Click);
             // 
             // btnAddMonHoc
             // 
@@ -420,6 +423,7 @@ namespace QuanLySinhVien
             this.btnAddMonHoc.TabIndex = 0;
             this.btnAddMonHoc.Text = "Thêm";
             this.btnAddMonHoc.UseVisualStyleBackColor = true;
+            this.btnAddMonHoc.Click += new System.EventHandler(this.btnAddMonHoc_Click);
             // 
             // btnViewMonHoc
             // 
@@ -429,6 +433,7 @@ namespace QuanLySinhVien
             this.btnViewMonHoc.TabIndex = 0;
             this.btnViewMonHoc.Text = "Xem";
             this.btnViewMonHoc.UseVisualStyleBackColor = true;
+            this.btnViewMonHoc.Click += new System.EventHandler(this.btnViewMonHoc_Click);
             // 
             // tpHocPhan
             // 
@@ -437,7 +442,7 @@ namespace QuanLySinhVien
             this.tpHocPhan.Controls.Add(this.panel17);
             this.tpHocPhan.Location = new System.Drawing.Point(4, 22);
             this.tpHocPhan.Name = "tpHocPhan";
-            this.tpHocPhan.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpHocPhan.Padding = new System.Windows.Forms.Padding(3);
             this.tpHocPhan.Size = new System.Drawing.Size(640, 472);
             this.tpHocPhan.TabIndex = 1;
             this.tpHocPhan.Text = "Học Phần";
@@ -577,7 +582,7 @@ namespace QuanLySinhVien
             this.tpSinhVien.Controls.Add(this.panel23);
             this.tpSinhVien.Location = new System.Drawing.Point(4, 22);
             this.tpSinhVien.Name = "tpSinhVien";
-            this.tpSinhVien.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSinhVien.Padding = new System.Windows.Forms.Padding(3);
             this.tpSinhVien.Size = new System.Drawing.Size(640, 472);
             this.tpSinhVien.TabIndex = 4;
             this.tpSinhVien.Text = "Sinh Viên";
@@ -746,6 +751,7 @@ namespace QuanLySinhVien
             this.btnSearchSinhVien.TabIndex = 0;
             this.btnSearchSinhVien.Text = "Tìm";
             this.btnSearchSinhVien.UseVisualStyleBackColor = true;
+            this.btnSearchSinhVien.Click += new System.EventHandler(this.btnSearchSinhVien_Click);
             // 
             // panel22
             // 
@@ -823,7 +829,7 @@ namespace QuanLySinhVien
             this.tpKhoa.Controls.Add(this.panel32);
             this.tpKhoa.Location = new System.Drawing.Point(4, 22);
             this.tpKhoa.Name = "tpKhoa";
-            this.tpKhoa.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpKhoa.Padding = new System.Windows.Forms.Padding(3);
             this.tpKhoa.Size = new System.Drawing.Size(640, 472);
             this.tpKhoa.TabIndex = 5;
             this.tpKhoa.Text = "Khoa";
@@ -965,7 +971,7 @@ namespace QuanLySinhVien
             this.tpLop.Controls.Add(this.panel40);
             this.tpLop.Location = new System.Drawing.Point(4, 22);
             this.tpLop.Name = "tpLop";
-            this.tpLop.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpLop.Padding = new System.Windows.Forms.Padding(3);
             this.tpLop.Size = new System.Drawing.Size(640, 472);
             this.tpLop.TabIndex = 7;
             this.tpLop.Text = "Lớp";
@@ -1107,7 +1113,7 @@ namespace QuanLySinhVien
             this.tpTaiKhoan.Controls.Add(this.panel37);
             this.tpTaiKhoan.Location = new System.Drawing.Point(4, 22);
             this.tpTaiKhoan.Name = "tpTaiKhoan";
-            this.tpTaiKhoan.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpTaiKhoan.Padding = new System.Windows.Forms.Padding(3);
             this.tpTaiKhoan.Size = new System.Drawing.Size(640, 472);
             this.tpTaiKhoan.TabIndex = 6;
             this.tpTaiKhoan.Text = "Tài Khoản";
