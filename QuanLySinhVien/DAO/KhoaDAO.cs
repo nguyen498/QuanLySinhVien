@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLySinhVien.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,6 +22,23 @@ namespace QuanLySinhVien.DAO
             string query = "SELECT * FROM dbo.KHOA";
 
             return DataProvider.Instance.ExecuteQuery(query);
+        }
+
+        public List<Khoa> GetListOfKhoa()
+        {
+            List<Khoa> list = new List<Khoa>();
+
+            string query = string.Format("SELECT * FROM dbo.Khoa");
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Khoa Khoa = new Khoa(item);
+                list.Add(Khoa);
+            }
+
+            return list;
         }
 
         public bool insertKhoa(string tenKhoa)

@@ -19,7 +19,7 @@ namespace QuanLySinhVien.DAO
 
         private DataProvider() { }
 
-        string connectionSTR = "Data Source=THANHDUNG;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
+        string connectionSTR = "Data Source=.\\FIRSTSERVER;Initial Catalog=QUANLYSINHVIEN;Integrated Security=True";
 
         
         public DataTable ExecuteQuery(string query, object[] parameter = null)

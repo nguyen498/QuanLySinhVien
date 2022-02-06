@@ -117,10 +117,10 @@ namespace QuanLySinhVien
         }
         private void loadMonHocBinding()
         {
-            txtIDMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATAIKHOAN", true, DataSourceUpdateMode.Never));
-            txtTenMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "TENTAIKHOAN", true, DataSourceUpdateMode.Never));
-            txtSoTinChiMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATKHAU", true, DataSourceUpdateMode.Never));
-            txtDonViPhuTrachMonHoc.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MASINHVIEN", true, DataSourceUpdateMode.Never));
+            txtIDMonHoc.DataBindings.Add(new Binding("Text", dtgvMonHoc.DataSource, "MAMONHOC", true, DataSourceUpdateMode.Never));
+            txtTenMonHoc.DataBindings.Add(new Binding("Text", dtgvMonHoc.DataSource, "TENMONHOC", true, DataSourceUpdateMode.Never));
+            txtSoTinChiMonHoc.DataBindings.Add(new Binding("Text", dtgvMonHoc.DataSource, "SOTINCHI", true, DataSourceUpdateMode.Never));
+            txtDonViPhuTrachMonHoc.DataBindings.Add(new Binding("Text", dtgvMonHoc.DataSource, "MAKHOA", true, DataSourceUpdateMode.Never));
         }
         #endregion
 
