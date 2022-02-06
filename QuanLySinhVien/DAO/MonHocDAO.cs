@@ -40,6 +40,8 @@ namespace QuanLySinhVien.DAO
 
             return list;
         }
+
+        
         public List<MonHoc> GetMonHocListByTenMonHoc(string tenMonHoc)
         {
             List<MonHoc> list = new List<MonHoc>();
