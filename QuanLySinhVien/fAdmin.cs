@@ -47,9 +47,38 @@ namespace QuanLySinhVien
             dtgvMonHoc.DataSource = monHocList;
             loadMonHocs();
             loadMonHocBinding();
+
+            // Hoc Phan Dang Ky
+            loadListOfSinhVienHPDK();
         }
 
         #region methods
+        void loadListOfSinhVienHPDK()
+        {
+            int btnWidtn = 115;
+            int btnHeight = 90;
+            List<SinhVien> sinhVienList = SinhVienDAO.Instance.getSinhVienList();
+
+            foreach (SinhVien sv in sinhVienList)
+            {
+                Button btn = new Button() { Width = btnWidtn, Height = btnHeight };
+                btn.Text = sv.HoTen + Environment.NewLine + "MSSV - " + sv.MaSinhVien;
+                btn.Click += Btn_Click;
+                btn.Tag = sv;
+                flpSinhVienList.Controls.Add(btn);
+            }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            int maSinhVien = ((sender as Button).Tag as SinhVien).MaSinhVien;
+            loadMonHocDaDangKyByMaSinhVien(maSinhVien);
+        }
+        void loadMonHocDaDangKyByMaSinhVien(int maSinhVien)
+        {
+            dtgvMonHocDaDangKyHPDK.DataSource = HocPhanDangKyDAO.Instance.getHocPhanDangKyByMaSinhVien(maSinhVien);
+        }
+
         void loadTaiKhoans()
         {
             taiKhoanList.DataSource = TaiKhoanDAO.Instance.getTaiKhoans();
@@ -407,6 +436,35 @@ namespace QuanLySinhVien
             {
                 MessageBox.Show("Có lỗi khi xóa môn học");
             }
+        }
+
+        private void btnSearchSinhVienHPDK_Click(object sender, EventArgs e)
+        {
+            string tenSinhVien = txtSearchSinhVienHPDK.Text;
+            flpSinhVienList.Controls.Clear();
+            loadListOfSinhVienHPDKByTenSinhVien(tenSinhVien);
+        }
+
+        void loadListOfSinhVienHPDKByTenSinhVien(string tenSinhVien)
+        {
+            int btnWidtn = 115;
+            int btnHeight = 90;
+            List<SinhVien> sinhVienList = SinhVienDAO.Instance.SearchSinhVienByName(tenSinhVien);
+
+            foreach (SinhVien sv in sinhVienList)
+            {
+                Button btn = new Button() { Width = btnWidtn, Height = btnHeight };
+                btn.Text = sv.HoTen + Environment.NewLine + "MSSV - " + sv.MaSinhVien;
+                btn.Click += Btn_Click;
+                btn.Tag = sv;
+                flpSinhVienList.Controls.Add(btn);
+            }
+        }
+
+        private void btnViewHocPhan_Click(object sender, EventArgs e)
+        {
+            flpSinhVienList.Controls.Clear();
+            loadListOfSinhVienHPDK();
         }
     }
 }

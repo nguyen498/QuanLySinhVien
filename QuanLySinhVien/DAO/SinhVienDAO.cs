@@ -24,6 +24,24 @@ namespace QuanLySinhVien.DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+
+        public List<SinhVien> getSinhVienList()
+        {
+            List<SinhVien> list = new List<SinhVien>();
+
+            string query = "SELECT * FROM dbo.SINHVIEN";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                SinhVien SinhVien = new SinhVien(item);
+                list.Add(SinhVien);
+            }
+
+            return list;
+        }
+
         public bool insertSinhVien(string hoTenSinhVien, string diaChi, string dienThoai ,int maLopSinhVien)
         {
             string query = string.Format("INSERT dbo.SINHVIEN( HOTEN, DIACHI, DIENTHOAI, MALOP ) VALUES (N'{0}', N'{1}', N'{2}',{3})", hoTenSinhVien, diaChi, dienThoai, maLopSinhVien);

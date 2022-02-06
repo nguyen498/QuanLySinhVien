@@ -46,6 +46,8 @@ namespace QuanLySinhVien
             this.btnHuyDangKyDKHP = new System.Windows.Forms.Button();
             this.btnDangKyDKHP = new System.Windows.Forms.Button();
             this.cbFilterSelect = new System.Windows.Forms.ComboBox();
+            this.txtSearchMonHocClient = new System.Windows.Forms.TextBox();
+            this.btnSearchMonHocClient = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,6 +116,7 @@ namespace QuanLySinhVien
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(373, 21);
             this.cbFilter.TabIndex = 0;
+            this.cbFilter.Text = "Chọn danh sách lọc";
             this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // panel3
@@ -127,6 +130,7 @@ namespace QuanLySinhVien
             // 
             // dtgvMonHoc
             // 
+            this.dtgvMonHoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvMonHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvMonHoc.Location = new System.Drawing.Point(0, 24);
             this.dtgvMonHoc.Name = "dtgvMonHoc";
@@ -153,6 +157,7 @@ namespace QuanLySinhVien
             // 
             // dtgvMonDaDangKy
             // 
+            this.dtgvMonDaDangKy.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvMonDaDangKy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvMonDaDangKy.Location = new System.Drawing.Point(4, 24);
             this.dtgvMonDaDangKy.Name = "dtgvMonDaDangKy";
@@ -206,11 +211,30 @@ namespace QuanLySinhVien
             this.cbFilterSelect.TabIndex = 0;
             this.cbFilterSelect.SelectedIndexChanged += new System.EventHandler(this.cbFilterSelect_SelectedIndexChanged);
             // 
+            // txtSearchMonHocClient
+            // 
+            this.txtSearchMonHocClient.Location = new System.Drawing.Point(402, 59);
+            this.txtSearchMonHocClient.Name = "txtSearchMonHocClient";
+            this.txtSearchMonHocClient.Size = new System.Drawing.Size(196, 20);
+            this.txtSearchMonHocClient.TabIndex = 7;
+            // 
+            // btnSearchMonHocClient
+            // 
+            this.btnSearchMonHocClient.Location = new System.Drawing.Point(604, 59);
+            this.btnSearchMonHocClient.Name = "btnSearchMonHocClient";
+            this.btnSearchMonHocClient.Size = new System.Drawing.Size(79, 20);
+            this.btnSearchMonHocClient.TabIndex = 8;
+            this.btnSearchMonHocClient.Text = "Tìm";
+            this.btnSearchMonHocClient.UseVisualStyleBackColor = true;
+            this.btnSearchMonHocClient.Click += new System.EventHandler(this.btnSearchMonHocClient_Click);
+            // 
             // fDangKyHocPhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 428);
+            this.Controls.Add(this.btnSearchMonHocClient);
+            this.Controls.Add(this.txtSearchMonHocClient);
             this.Controls.Add(this.cbFilterSelect);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -254,5 +278,7 @@ namespace QuanLySinhVien
         private System.Windows.Forms.DataGridView dtgvMonHoc;
         private System.Windows.Forms.DataGridView dtgvMonDaDangKy;
         private System.Windows.Forms.ComboBox cbFilterSelect;
+        private System.Windows.Forms.TextBox txtSearchMonHocClient;
+        private System.Windows.Forms.Button btnSearchMonHocClient;
     }
 }
