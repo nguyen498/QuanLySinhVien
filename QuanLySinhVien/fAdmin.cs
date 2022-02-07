@@ -119,6 +119,7 @@ namespace QuanLySinhVien
         {
             txtIDTaiKhoan.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATAIKHOAN", true, DataSourceUpdateMode.Never));
             txtTenTaiKhoan.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "TENTAIKHOAN", true, DataSourceUpdateMode.Never));
+            txtTenHienThi.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "TENHIENTHI", true, DataSourceUpdateMode.Never));
             txtMatKhau.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MATKHAU", true, DataSourceUpdateMode.Never));
             txtMaSinhVien.DataBindings.Add(new Binding("Text", dtgvTaiKhoan.DataSource, "MASINHVIEN", true, DataSourceUpdateMode.Never));
         }
@@ -167,10 +168,11 @@ namespace QuanLySinhVien
         private void btnAddTaiKhoan_Click(object sender, EventArgs e)
         {
             string tenTaiKhoan = txtTenTaiKhoan.Text;
+            string tenHienThi = txtTenHienThi.Text;
             string matKhau = txtMatKhau.Text;
             int maSinhVien = Convert.ToInt32(txtMaSinhVien.Text);
 
-            if (TaiKhoanDAO.Instance.insertTaiKhoan(tenTaiKhoan, matKhau, maSinhVien))
+            if (TaiKhoanDAO.Instance.insertTaiKhoan(tenTaiKhoan, tenHienThi, matKhau, maSinhVien))
             {
                 MessageBox.Show("Thêm tài khoản thành công");
                 loadTaiKhoans();
@@ -185,10 +187,11 @@ namespace QuanLySinhVien
         {
             int maTaiKhoan = Convert.ToInt32(txtIDTaiKhoan.Text);
             string tenTaiKhoan = txtTenTaiKhoan.Text;
+            string tenHienThi = txtTenHienThi.Text;
             string matKhau = txtMatKhau.Text;
             int maSinhVien = Convert.ToInt32(txtMaSinhVien.Text);
 
-            if (TaiKhoanDAO.Instance.updateTaiKhoan(maTaiKhoan, tenTaiKhoan, matKhau, maSinhVien))
+            if (TaiKhoanDAO.Instance.updateTaiKhoan(maTaiKhoan, tenTaiKhoan, tenHienThi, matKhau, maSinhVien))
             {
                 MessageBox.Show("Cập nhật tài khoản thành công");
                 loadTaiKhoans();

@@ -61,9 +61,9 @@ namespace QuanLySinhVien
             this.txtSearchSinhVienHPDK = new System.Windows.Forms.TextBox();
             this.btnSearchSinhVienHPDK = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.btnViewHocPhan = new System.Windows.Forms.Button();
             this.flpSinhVienList = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnViewHocPhan = new System.Windows.Forms.Button();
             this.tpSinhVien = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -142,6 +142,9 @@ namespace QuanLySinhVien
             this.btnEditTaiKhoan = new System.Windows.Forms.Button();
             this.btnAddTaiKhoan = new System.Windows.Forms.Button();
             this.btnViewTaiKhoan = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTenHienThi = new System.Windows.Forms.TextBox();
             this.tcAdmin.SuspendLayout();
             this.tpMonHoc.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -192,6 +195,7 @@ namespace QuanLySinhVien
             this.panel36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTaiKhoan)).BeginInit();
             this.panel37.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -497,6 +501,16 @@ namespace QuanLySinhVien
             this.panel16.Size = new System.Drawing.Size(253, 451);
             this.panel16.TabIndex = 5;
             // 
+            // btnViewHocPhan
+            // 
+            this.btnViewHocPhan.Location = new System.Drawing.Point(153, 7);
+            this.btnViewHocPhan.Name = "btnViewHocPhan";
+            this.btnViewHocPhan.Size = new System.Drawing.Size(86, 31);
+            this.btnViewHocPhan.TabIndex = 0;
+            this.btnViewHocPhan.Text = "Xem";
+            this.btnViewHocPhan.UseVisualStyleBackColor = true;
+            this.btnViewHocPhan.Click += new System.EventHandler(this.btnViewHocPhan_Click);
+            // 
             // flpSinhVienList
             // 
             this.flpSinhVienList.Location = new System.Drawing.Point(3, 44);
@@ -512,16 +526,6 @@ namespace QuanLySinhVien
             this.label8.Size = new System.Drawing.Size(106, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Danh sách Sinh viên";
-            // 
-            // btnViewHocPhan
-            // 
-            this.btnViewHocPhan.Location = new System.Drawing.Point(153, 7);
-            this.btnViewHocPhan.Name = "btnViewHocPhan";
-            this.btnViewHocPhan.Size = new System.Drawing.Size(86, 31);
-            this.btnViewHocPhan.TabIndex = 0;
-            this.btnViewHocPhan.Text = "Xem";
-            this.btnViewHocPhan.UseVisualStyleBackColor = true;
-            this.btnViewHocPhan.Click += new System.EventHandler(this.btnViewHocPhan_Click);
             // 
             // tpSinhVien
             // 
@@ -1071,6 +1075,7 @@ namespace QuanLySinhVien
             // 
             // panel25
             // 
+            this.panel25.Controls.Add(this.panel14);
             this.panel25.Controls.Add(this.panel26);
             this.panel25.Controls.Add(this.panel30);
             this.panel25.Controls.Add(this.panel34);
@@ -1084,7 +1089,7 @@ namespace QuanLySinhVien
             // 
             this.panel26.Controls.Add(this.label14);
             this.panel26.Controls.Add(this.txtMaSinhVien);
-            this.panel26.Location = new System.Drawing.Point(4, 171);
+            this.panel26.Location = new System.Drawing.Point(3, 223);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(286, 46);
             this.panel26.TabIndex = 6;
@@ -1109,7 +1114,7 @@ namespace QuanLySinhVien
             // 
             this.panel30.Controls.Add(this.label12);
             this.panel30.Controls.Add(this.txtMatKhau);
-            this.panel30.Location = new System.Drawing.Point(4, 119);
+            this.panel30.Location = new System.Drawing.Point(3, 171);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(286, 46);
             this.panel30.TabIndex = 5;
@@ -1250,6 +1255,31 @@ namespace QuanLySinhVien
             this.btnViewTaiKhoan.UseVisualStyleBackColor = true;
             this.btnViewTaiKhoan.Click += new System.EventHandler(this.btnViewTaiKhoan_Click);
             // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.label7);
+            this.panel14.Controls.Add(this.txtTenHienThi);
+            this.panel14.Location = new System.Drawing.Point(4, 119);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(286, 46);
+            this.panel14.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Tên hiển thị:";
+            // 
+            // txtTenHienThi
+            // 
+            this.txtTenHienThi.Location = new System.Drawing.Point(126, 13);
+            this.txtTenHienThi.Name = "txtTenHienThi";
+            this.txtTenHienThi.Size = new System.Drawing.Size(157, 20);
+            this.txtTenHienThi.TabIndex = 0;
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1330,6 +1360,8 @@ namespace QuanLySinhVien
             this.panel36.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTaiKhoan)).EndInit();
             this.panel37.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1449,5 +1481,8 @@ namespace QuanLySinhVien
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.FlowLayoutPanel flpSinhVienList;
         private System.Windows.Forms.DataGridView dtgvMonHocDaDangKyHPDK;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTenHienThi;
     }
 }
