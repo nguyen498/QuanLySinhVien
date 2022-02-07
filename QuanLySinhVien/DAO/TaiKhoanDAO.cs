@@ -36,18 +36,18 @@ namespace QuanLySinhVien.DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
-        public bool insertTaiKhoan(string tenTaiKhoan, string matKhau, int maSinhVien)
+        public bool insertTaiKhoan(string tenTaiKhoan, string tenHienThi, string matKhau, int maSinhVien)
         {
-            string query = string.Format("INSERT dbo.TAIKHOAN( TENTAIKHOAN, MATKHAU, MASINHVIEN ) VALUES (N'{0}', N'{1}', {2})", tenTaiKhoan, matKhau, maSinhVien);
+            string query = string.Format("INSERT dbo.TAIKHOAN( TENTAIKHOAN, TENHIENTHI, MATKHAU, MASINHVIEN ) VALUES (N'{0}', N'{1}', N'{2}', {3})", tenTaiKhoan, tenHienThi, matKhau, maSinhVien);
 
             int result =  DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
 
-        public bool updateTaiKhoan(int maTaiKhoan, string tenTaiKhoan, string matKhau, int maSinhVien)
+        public bool updateTaiKhoan(int maTaiKhoan, string tenTaiKhoan, string tenHienThi, string matKhau, int maSinhVien)
         {
-            string query = string.Format("UPDATE dbo.TAIKHOAN SET TENTAIKHOAN = N'{1}', MATKHAU = N'{2}', MASINHVIEN = {3} WHERE MATAIKHOAN = {0}", maTaiKhoan, tenTaiKhoan, matKhau, maSinhVien);
+            string query = string.Format("UPDATE dbo.TAIKHOAN SET TENTAIKHOAN = N'{1}', TENHIENTHI = N'{2}', MATKHAU = N'{3}', MASINHVIEN = {4} WHERE MATAIKHOAN = {0}", maTaiKhoan, tenTaiKhoan, tenHienThi, matKhau, maSinhVien);
 
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
