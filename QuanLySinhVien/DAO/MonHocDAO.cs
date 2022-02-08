@@ -24,12 +24,17 @@ namespace QuanLySinhVien.DAO
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
-        public List<MonHoc> getListOfMonHoc()
+        public List<MonHoc> getListOfMonHoc(bool withExcept = false, int maSinhVien = 0)
         {
             List<MonHoc> list = new List<MonHoc>();
 
             string query = "SELECT * FROM dbo.MONHOC";
 
+            if (withExcept)
+            {
+                query += string.Format(" EXCEPT SELECT HPDK.MAMONHOC, TENMONHOC, SOTINCHI, MAKHOA FROM MONHOC AS MH, HOCPHANDANGKY AS HPDK WHERE HPDK.MASINHVIEN = {0}", maSinhVien);
+            }
+
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
@@ -41,13 +46,18 @@ namespace QuanLySinhVien.DAO
             return list;
         }
 
-        
-        public List<MonHoc> GetMonHocListByTenMonHoc(string tenMonHoc)
+
+        public List<MonHoc> GetMonHocListByTenMonHoc(string tenMonHoc, bool withExcept = false, int maSinhVien = 0)
         {
             List<MonHoc> list = new List<MonHoc>();
 
             string query = string.Format("SELECT * FROM dbo.MONHOC WHERE TENMONHOC = N'{0}'", tenMonHoc);
 
+            if (withExcept)
+            {
+                query += string.Format(" EXCEPT SELECT HPDK.MAMONHOC, TENMONHOC, SOTINCHI, MAKHOA FROM MONHOC AS MH, HOCPHANDANGKY AS HPDK WHERE HPDK.MASINHVIEN = {0}", maSinhVien);
+            }
+
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
@@ -59,11 +69,16 @@ namespace QuanLySinhVien.DAO
             return list;
         }
 
-        public List<MonHoc> GetMonHocListByMaKhoa(int maKhoa)
+        public List<MonHoc> GetMonHocListByMaKhoa(int maKhoa, bool withExcept = false, int maSinhVien = 0)
         {
             List<MonHoc> list = new List<MonHoc>();
 
             string query = string.Format("SELECT * FROM dbo.MONHOC WHERE MONHOC.MAKHOA = {0}", maKhoa);
+
+            if (withExcept)
+            {
+                query += string.Format(" EXCEPT SELECT HPDK.MAMONHOC, TENMONHOC, SOTINCHI, MAKHOA FROM MONHOC AS MH, HOCPHANDANGKY AS HPDK WHERE HPDK.MASINHVIEN = {0}", maSinhVien);
+            }
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -103,11 +118,16 @@ namespace QuanLySinhVien.DAO
 
             return result > 0;
         }
-        public List<MonHoc> SearchMonHocByName(string name)
+        public List<MonHoc> SearchMonHocByName(string name, bool withExcept = false, int maSinhVien = 0)
         {
             List<MonHoc> list = new List<MonHoc>();
 
             string query = string.Format("SELECT * FROM dbo.MONHOC WHERE dbo.fuConvertToUnsign1(TENMONHOC) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+
+            if (withExcept)
+            {
+                query += string.Format(" EXCEPT SELECT HPDK.MAMONHOC, TENMONHOC, SOTINCHI, MAKHOA FROM MONHOC AS MH, HOCPHANDANGKY AS HPDK WHERE HPDK.MASINHVIEN = {0}", maSinhVien);
+            }
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

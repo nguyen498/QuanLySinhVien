@@ -469,5 +469,11 @@ namespace QuanLySinhVien
             flpSinhVienList.Controls.Clear();
             loadListOfSinhVienHPDK();
         }
+
+        private void fAdmin_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
