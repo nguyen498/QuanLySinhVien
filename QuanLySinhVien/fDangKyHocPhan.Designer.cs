@@ -161,7 +161,7 @@ namespace QuanLySinhVien
             this.dtgvMonDaDangKy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvMonDaDangKy.Location = new System.Drawing.Point(4, 24);
             this.dtgvMonDaDangKy.Name = "dtgvMonDaDangKy";
-            this.dtgvMonDaDangKy.Size = new System.Drawing.Size(277, 250);
+            this.dtgvMonDaDangKy.Size = new System.Drawing.Size(277, 229);
             this.dtgvMonDaDangKy.TabIndex = 2;
             // 
             // label2

@@ -41,7 +41,8 @@ namespace QuanLySinhVien
 
         void loadListOfMonHoc()
         {
-            dtgvMonHoc.DataSource = MonHocDAO.Instance.getListOfMonHoc();
+            int maSinhVien = currentUser.MaTaiKhoan;
+            dtgvMonHoc.DataSource = MonHocDAO.Instance.getListOfMonHoc(true, maSinhVien);
         }
 
 
@@ -66,18 +67,21 @@ namespace QuanLySinhVien
 
         void loadMonHocListByTenMonHocToDTGV(string tenMonHoc)
         {
-            List<MonHoc> listMonHoc = MonHocDAO.Instance.GetMonHocListByTenMonHoc(tenMonHoc);
+            int maSinhVien = currentUser.MaTaiKhoan;
+            List<MonHoc> listMonHoc = MonHocDAO.Instance.GetMonHocListByTenMonHoc(tenMonHoc, true, maSinhVien);
             dtgvMonHoc.DataSource = listMonHoc;
         }
         void loadMonHocListByMaKhoaToDTGV(int maKhoa)
         {
-            List<MonHoc> listMonHoc = MonHocDAO.Instance.GetMonHocListByMaKhoa(maKhoa);
+            int maSinhVien = currentUser.MaTaiKhoan;
+            List<MonHoc> listMonHoc = MonHocDAO.Instance.GetMonHocListByMaKhoa(maKhoa, true, maSinhVien);
             dtgvMonHoc.DataSource = listMonHoc;
         }
 
         void loadListOfMonHocByTenMonHoc(string tenMonHoc)
         {
-            List<MonHoc> listMonHoc = MonHocDAO.Instance.SearchMonHocByName(tenMonHoc);
+            int maSinhVien = currentUser.MaTaiKhoan;
+            List<MonHoc> listMonHoc = MonHocDAO.Instance.SearchMonHocByName(tenMonHoc, true, maSinhVien);
             dtgvMonHoc.DataSource = listMonHoc;
         }
         #endregion
